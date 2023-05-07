@@ -1,5 +1,6 @@
 import React from "react";
+import { FilterInput, LabelFilter } from './Filter.styled'
 
 export const Filter = ({value, onChange}) => {
-    return (<label> Find contacts by name<input type='text' value={value} onChange={onChange}></input></label>)
+    return (<LabelFilter> Find contacts by name<FilterInput type='text' value={value} onChange={onChange}></FilterInput></LabelFilter>)
 }

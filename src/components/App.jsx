@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import ContactForm from './Form/form';
 import { ContactList } from './Contact/Contact';
 import { Filter } from './Filter/Filter';
+import {Title} from './App.styled'
 
 class App extends Component {
   state = {
@@ -63,11 +64,11 @@ class App extends Component {
         }}
       >
         <div>
-          <h1>Phonebook</h1>
+          <Title>Phonebook</Title>
 
           <ContactForm onSubmit={this.handleAddContact} />
 
-          <h2>Contacts</h2>
+          <Title>Contacts</Title>
 
           <Filter
             value={this.state.filter}
