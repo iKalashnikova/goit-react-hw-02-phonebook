@@ -1,16 +1,57 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
+import React, { Component } from 'react';
+import { nanoid } from "nanoid";
+import ContactForm from './Form/form';
+import { ContactList } from './Contact/Contact';
+
+class App extends Component {
+  state = {
+    contacts: [], 
+    filter: ''
+}
+
+  onSubmitHandler = data => {
+console.log(data);
+  }
+
+
+  
+  handleAddContact = newContact => {
+  const contact = {
+    id: nanoid(),
+    name: newContact.name,
+    number: newContact.number,
+  };
+  this.setState(prevState => ({
+    contacts: [...prevState.contacts, contact]
+  }));
 };
+  
+  render() {
+    return (
+      <div
+        style={{
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontSize: 40,
+          color: '#010101',
+        }}
+      >
+        <div>
+          <h1>Phonebook</h1>
+          
+
+          <ContactForm onSubmit={ this.handleAddContact} />
+
+          <h2>Contacts</h2>
+          
+  {/* <Filter /> */}
+  <ContactList contacts={this.state.contacts} />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
